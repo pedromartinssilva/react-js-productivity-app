@@ -11,11 +11,11 @@ export const TodoWrapper = () => {
 
     const addTodo = todo => {
         setTodos([...todos, {id:uuidv4(), task: todo, completed: false, isEditing: false}])
-        console.log(todos)
     }
 
     const toggleComplete = id => {
         setTodos(todos.map(todo => todo.id == id ? {...todo, completed: !todo.completed} : todo))
+        console.log(todos)
     }
 
     const deleteTodo = id => {
@@ -32,7 +32,7 @@ export const TodoWrapper = () => {
 
     return (
         <div className="TodoWrapper">
-            <h1>Título</h1>
+            <h1>Lista de Tarefas</h1>
             <TodoForm addTodo={addTodo}/>
             <div className="todo-list">
                 {todos.map((todo, index) => (
@@ -46,6 +46,7 @@ export const TodoWrapper = () => {
                     )   
                 ))}
             </div>
+            {todos.length > 0 && <p className="complete-instructions">Clique numa tarefa para marcá-la como completa!</p>}
         </div>
     )
 }
